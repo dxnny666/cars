@@ -1,0 +1,66 @@
+# Создать список (автосалон), состоящий из словарей (машина). Словари должны содержать как минимум 5 полей
+# (например, номер, модель, год выпуска, ...). В список добавить хотя бы 10 словарей.
+# Конструкция вида:
+# cars = [{"id":123456, "model":"Mercedes-Benz", "year": 2019, ...} , {...}, {...}, ...].
+# Реализовать функции:
+# – вывода информации о всех машинах;
+# – вывода информации о машине по введенному с клавиатуры номеру;
+# – вывода количества машин, моложе введённого года;
+# – обновлении всей информации о машине по введенному номеру;
+# – удалении машины по номеру.
+# Провести тестирование функций.
+
+cars = [{"Id": 11988, "Model": "BMW", "colour": "white", "Year": 2011, "Mileage": 10},
+        {"Id": 66945, "Model": "Nissan", "colour": "red", "Year": 2002, "Mileage": 8},
+        {"Id": 45218, "Model": "Toyota", "colour": "silver", "Year": 2016, "Mileage": 7},
+        {"Id": 12795, "Model": "Mers", "colour": "black", "Year": 2017, "Mileage": 10},
+        {"Id": 45896, "Model": "Mers", "colour": "black", "Year": 2016, "Mileage": 8},
+        {"Id": 14668, "Model": "Nissan", "colour": "yellow", "Year": 2018, "Mileage": 10},
+        {"Id": 12887, "Model": "Toyota", "colour": "white", "Year": 2014, "Mileage": 7},
+        {"Id": 97664, "Model": "BMW", "colour": "green", "Year": 2003, "Mileage": 6},
+        {"Id": 47658, "Model": "Toyota", "colour": "red", "Year": 2011, "Mileage": 4},
+        {"Id": 65895, "Model": "Mers", "colour": "white", "Year": 2007, "Mileage": 5}]
+
+def showInfo(cars):
+    for car in cars:
+        print("ID - {0}\nModel - {1}\nYear - {2}\ncolour - {3}\nMileage - {4}\n".format(car['Id'], car['Model'], car['Year'], car['colour'], car['Mileage']))
+
+def showInfoByID(cars, id):
+    for car in cars:
+        if car['Id'] == id:
+            print("ID - {0}\nModel - {1}\nYear - {2}\ncolour - {3}\nMileage - {4}\n".format(car['Id'], car['Model'], car['Year'], car['colour'], car['Mileage']))
+        else:
+            print("No cars")
+
+def showInfoByYear(cars, year):
+    for car in cars:
+        if car['Year'] <= year:
+            print("ID - {0}\nModel - {1}\nYear - {2}\ncolour - {3}\nMileage - {4}\n".format(car['Id'], car['Model'], car['Year'], car['colour'], car['Mileage']))
+        else:
+            print("No cars")
+
+def updateCar(cars, id):
+    for car in cars:
+        if car['Id'] == id:
+            print("Input car model - ")
+            car['Model'] = input()
+
+            print("Input car year - ")
+            car['Year'] = int(input())
+
+            print("Input car colour - ")
+            car['colour'] = input()
+
+            print("Input car mileage - ")
+            car['Mileage'] = int(input())
+
+def deleteCar(cars, id):
+    for car in cars:
+        if car['Id'] == id:
+            cars.remove(car)
+
+showInfo(cars)
+showInfoByID(cars, 45896)
+showInfoByYear(cars, 2014)
+updateCar(cars, 45896)
+deleteCar(cars, 45896)
